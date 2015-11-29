@@ -42,3 +42,13 @@ exports.userByID = function(req, res, next, id) {
         }
     });
 };
+
+exports.update = function(req, res, next) {
+    User.findByIdAnUpdate(req.user.id, req.body, function(error, user) {
+        if (error) {
+            return next(error);
+        } else {
+            res.json(user);
+        }
+    });
+};
