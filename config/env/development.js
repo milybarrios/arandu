@@ -3,5 +3,6 @@
  */
 
 module.exports = {
-  sessionSecret: 'developmentSecret'
+  // Development configuration options
+  sessionSecret: 'developmentSessionSecret'
 };
