@@ -4,6 +4,8 @@ var compress = require('compression');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
+var config = require('./config');
+
 module.exports = function(){
 	var app = express();
 
@@ -18,6 +20,13 @@ module.exports = function(){
 	}));
 	app.use(bodyParser.json);
 	app.use(methodOverride());
+
+	//configure session app
+	app.use(session({
+		saveUninitialized: true,
+		resave: true,
+		secret: config.sessionSecret
+	}));
 
 	app.set('views', './app/views');
 	app.set('view engine', 'ejs');
