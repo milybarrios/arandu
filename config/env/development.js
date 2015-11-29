@@ -4,5 +4,6 @@
 
 module.exports = {
   // Development configuration options
+  db: 'mongodb://localhost/bd_arandu',
   sessionSecret: 'developmentSessionSecret'
 };
