@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var compress = require('compression');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var session = require('express-session');
 
 var config = require('./config');
 
@@ -21,7 +22,7 @@ module.exports = function(){
 	app.use(bodyParser.json);
 	app.use(methodOverride());
 
-	//configure session app
+	//config. session app
 	app.use(session({
 		saveUninitialized: true,
 		resave: true,
@@ -33,6 +34,7 @@ module.exports = function(){
 
 	require('../app/routes/index.server.routes')(app);
 
+	//config. for serving content static
 	app.use(express.static('./public'));
 
 	return app;
