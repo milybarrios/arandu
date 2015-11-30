@@ -6,14 +6,24 @@ var mongoose = require('mongoose');
 
 Schema = mongoose.Schema;
 var userSchema = new Schema({
-    nombre: String,
-    apellido: String,
+    nombre: {
+        type: String,
+        trim: true
+    },
+    apellido: {
+        type: String,
+        trim: true
+    },
     email: String,
     clave: String,
     created: {
         type: Date,
         default: Date.now
     }
+});
+
+userSchema.virtual('nombreCompleto').get(function(){
+    return this.nombre + ' ' + this.apellido;
 });
 
 mongoose.model('User', userSchema);
