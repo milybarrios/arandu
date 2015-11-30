@@ -9,7 +9,11 @@ var userSchema = new Schema({
     nombre: String,
     apellido: String,
     email: String,
-    clave: String
+    clave: String,
+    created: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 mongoose.model('User', userSchema);
